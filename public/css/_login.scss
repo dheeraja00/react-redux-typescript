@@ -1,0 +1,30 @@
+/*
+    Style for login page
+*/
+
+.login-container {
+    margin: 0 auto;
+    width: 50%;
+
+    .card-title {
+        margin-bottom: 2rem !important;
+        text-align: center;
+    }
+
+    .success-container {
+        align-items: center;
+        display: flex;
+
+        // Employee button style comes in success message
+        .custom-btn {
+            font-size: 0.8rem;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 1rem;
+        }
+
+        span {
+            margin-right: auto;
+        }
+    }
+}
