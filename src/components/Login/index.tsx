@@ -104,6 +104,10 @@ class LoginForm extends React.Component<LoginProps, any> {
                             <div className="row">
                                 {this.renderButton()}
                             </div>
+
+                            <div className="row">
+                                <small className="grey-text"><em>Note: You can also register from this page.</em></small>
+                            </div>
                         </div>
                     </div>
                 </div>

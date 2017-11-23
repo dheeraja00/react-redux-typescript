@@ -17,10 +17,9 @@ import mapStateToProps from './mapToProps';
 
 class EmployeeList extends React.Component<EmployeeProps, any> {
     // Fetch all saved employees when component mounts
-    componentWillMount() {
+    componentDidMount() {
         this.props.employeesFetch();
     }
-
     // Render every single employee to the view from the fetched employee list
     renderRow(employee: any) {
         return (
@@ -46,6 +45,15 @@ class EmployeeList extends React.Component<EmployeeProps, any> {
         }
     }
 
+    // Function to show no record message if there are no employees
+    noRecordFound() {
+        if (!this.props.loading && !this.props.employees.length) {
+            return (
+                <li className="collection-item">No employee found</li>
+            )
+        }
+    }
+
     render() {
         return (
             <ul className="collection with-header">
@@ -62,6 +70,8 @@ class EmployeeList extends React.Component<EmployeeProps, any> {
                         return this.renderRow(employee)
                     })
                 }
+
+                {this.noRecordFound()}
             </ul>
         )
     }
