@@ -53,7 +53,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     // Different required plugins
     plugins: [

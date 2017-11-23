@@ -17,6 +17,14 @@ import LoginProps from './interface';
 import mapStateToProps from './mapToProps';
 
 class LoginForm extends React.Component<LoginProps, any> {
+    // This will be called whenever props get changed
+    componentWillReceiveProps(nextProps: any) {
+        // Look for success prop & redirect to employee after successful login
+        if (nextProps.success) {
+            nextProps.history.push('/employee');
+        }
+    }
+
     // Call action when email is changed, this will also update auth reducer with new email value
     onEmailChange(event: any) {
         this.props.emailChanged(event.target.value);
@@ -63,21 +71,6 @@ class LoginForm extends React.Component<LoginProps, any> {
         }
     }
 
-    // Display success if user logegd in successfully
-    showSuccess() {
-        if (this.props.success) {
-            return (
-                <div className="row">
-                    <div className="success-container card-panel green lighten-5 success-message">
-                        <span className="green-text">Successfully logged in.</span>
-
-                        <Link className="btn green darken-2 custom-btn" to="/employee">Employees</Link>
-                    </div>
-                </div>
-            )
-        }
-    }
-
     render() {
         return (
             <div className="login-container">
@@ -87,7 +80,6 @@ class LoginForm extends React.Component<LoginProps, any> {
                             <span className="card-title">Login</span>
                             
                             {this.showError()}
-                            {this.showSuccess()}
 
                             <div className="row">
                                 <Input 

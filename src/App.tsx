@@ -5,6 +5,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+// Import routing packages to navigate user to specific route
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from 'react-router-dom';
 // Imported required package to create store & attach multiple middlewares to store
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,8 +21,11 @@ import * as firebase from 'firebase';
 
 // Combined reducers for reducer page
 import reducers from './reducers';
-// Router contains all path added in app
-import Router from './Router';
+
+// Different routes present in project
+import LoginForm from './components/Login/';
+import EmployeeList from './components/Employee/List';
+import EmployeeCreate from './components/Employee/Create';
 
 class App extends React.Component {
     componentWillMount() {
@@ -40,7 +49,13 @@ class App extends React.Component {
         return (
             <Provider
                 store={store}>
-                <Router />
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={LoginForm} />
+                        <Route exact path="/employee" component={EmployeeList} />
+                        <Route path="/employee-create" component={EmployeeCreate} />
+                    </Switch>
+                </Router>
             </Provider>
         )
     }

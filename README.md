@@ -13,5 +13,3 @@ or
 `npm start`
 
 That's it you are good to go
-
-**Known issue:** *Routing is not working the way it should have worked, if you try to route programatically like `dispatch({push('/location')})` this doesn't work*
